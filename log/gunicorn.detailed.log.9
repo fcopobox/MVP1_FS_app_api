@@ -1,0 +1,91 @@
+[2026-03-20 16:25:49,511] INFO _log() L97    * Restarting with stat - call_trace=C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2026-03-20 16:29:14,382] INFO _log() L97    * Detected change in 'C:\\Users\\fco\\source\\repos\\BACKUP\\PUCRio\\MVP1\\fco_app_api\\app.py', reloading - call_trace=C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2026-03-20 16:29:14,533] INFO _log() L97    * Restarting with stat - call_trace=C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2026-03-20 16:29:18,795] INFO _log() L97    * Detected change in 'C:\\Users\\fco\\source\\repos\\BACKUP\\PUCRio\\MVP1\\fco_app_api\\schemas\\lugar.py', reloading - call_trace=C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2026-03-20 16:29:18,941] INFO _log() L97    * Restarting with stat - call_trace=C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2026-03-20 16:29:28,578] INFO _log() L97   127.0.0.1 - - [20/Mar/2026 16:29:28] "GET /openapi/swagger HTTP/1.1" 200 - - call_trace=C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2026-03-20 16:29:28,773] INFO _log() L97   127.0.0.1 - - [20/Mar/2026 16:29:28] "[36mGET /openapi/swagger/css/swagger-ui.css HTTP/1.1[0m" 304 - - call_trace=C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2026-03-20 16:29:28,841] INFO _log() L97   127.0.0.1 - - [20/Mar/2026 16:29:28] "[36mGET /openapi/swagger/js/swagger-ui-bundle.js HTTP/1.1[0m" 304 - - call_trace=C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2026-03-20 16:29:28,909] INFO _log() L97   127.0.0.1 - - [20/Mar/2026 16:29:28] "[36mGET /openapi/swagger/js/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 - - call_trace=C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2026-03-20 16:29:29,257] INFO _log() L97   127.0.0.1 - - [20/Mar/2026 16:29:29] "[36mGET /openapi/swagger/images/swagger.svg HTTP/1.1[0m" 304 - - call_trace=C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2026-03-20 16:29:29,259] INFO _log() L97   127.0.0.1 - - [20/Mar/2026 16:29:29] "GET /openapi/openapi.json HTTP/1.1" 200 - - call_trace=C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2026-03-20 16:29:46,642] ERROR log_exception() L875  Exception on /get_lugares [GET] - call_trace=C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\flask\app.py L875 
+Traceback (most recent call last):
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: lugares.cidade_lugar
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\flask_openapi3\scaffold.py", line 138, in view_func
+    response = func(**func_kwargs)
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\app.py", line 115, in get_lugares
+    lugares = session.query(Lugar).all()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\sqlalchemy\orm\query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+           ^^^^^^^^^^^^
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\sqlalchemy\orm\query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\sqlalchemy\orm\session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\sqlalchemy\orm\session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\sqlalchemy\sql\elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\sqlalchemy\engine\base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: lugares.cidade_lugar
+[SQL: SELECT lugares.pk_lugar AS lugares_pk_lugar, lugares.nome_lugar AS lugares_nome_lugar, lugares.cidade_lugar AS lugares_cidade_lugar, lugares.pais_lugar AS lugares_pais_lugar, lugares.prioridade AS lugares_prioridade 
+FROM lugares]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2026-03-20 16:29:46,660] INFO _log() L97   127.0.0.1 - - [20/Mar/2026 16:29:46] "[35m[1mGET /get_lugares HTTP/1.1[0m" 500 - - call_trace=C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2026-03-20 16:30:25,317] WARNING add_lugar() L99   Erro ao adicionar lugar 'Roma', Não foi possível salvar o destino :/ - call_trace=C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\app.py L99  
+[2026-03-20 16:30:25,317] INFO _log() L97   127.0.0.1 - - [20/Mar/2026 16:30:25] "[31m[1mPOST /add_lugar HTTP/1.1[0m" 400 - - call_trace=C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2026-03-20 16:30:54,096] INFO _log() L97   [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.100.0.2:5000 - call_trace=C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2026-03-20 16:30:54,097] INFO _log() L97   [33mPress CTRL+C to quit[0m - call_trace=C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\werkzeug\_internal.py L97  
+[2026-03-20 16:30:54,100] INFO _log() L97    * Restarting with stat - call_trace=C:\Users\fco\source\repos\BACKUP\PUCRio\MVP1\fco_app_api\env\Lib\site-packages\werkzeug\_internal.py L97  
