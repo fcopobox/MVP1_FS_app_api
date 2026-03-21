@@ -4,7 +4,7 @@ from model.local import Local
 
 
 class LocalSchema(BaseModel):
-    """ Define como um novo lugar deve ser representado. """
+    """ Como um novo lugar deve ser representado: """
     local_nome: str
     local_cidade: str
     local_pais: str
@@ -26,11 +26,14 @@ class LocalViewSchema(BaseModel):
 
 
 class ListagemLocaisSchema(BaseModel):
-    """ Lista de lugares retornada: """
-    lugares: List[LocalViewSchema]
+    """ Lista de locais de interesse retornada: """
+    locais: List[LocalViewSchema]
 
-
-class LocalRemoveSchema(BaseModel):
+class LocalFiltroSchema(BaseModel):
+    """ Lista de locais de interesse filtrada por país: """
+    local_pais: str | None = None
+    
+class LocalRemoveSchema(BaseModel): 
     """ Estrutura de retorno ao deletar: """
     message: str
     local_nome: str
@@ -50,5 +53,6 @@ def apresenta_local(local: Local):
 def apresenta_locais(locais: List[Local]):
     """ Retorna uma lista de locais de interesse no formato esperado. """
     return {
-        "locais de interesse": [apresenta_local(l) for l in locais]
+        "locais": [apresenta_local(l) for l in locais]
     }
+

@@ -4,6 +4,7 @@ from schemas.local import (
     LocalViewSchema,
     ListagemLocaisSchema,
     LocalRemoveSchema,
+    LocalFiltroSchema,
     apresenta_local,
     apresenta_locais
 )

@@ -32,7 +32,7 @@ from flask_cors import CORS
 
 
 # Cria informações básicas da API (nome e versão)
-info = Info(title="API MVP1 - Quero Visitar", version="1.0.0")
+info = Info(title="MVP1 - API Quero Visitar", version="1.0.0")
 
 # Inicializa a aplicação OpenAPI
 app = OpenAPI(__name__, info=info)
@@ -42,7 +42,7 @@ CORS(app)
 
 
 # Define tags usadas na documentação
-home_tag = Tag(name="Documentação", description="Seleção de documentação: Swagger.")
+home_tag = Tag(name="Documentação", description="Swagger.")
 local_tag = Tag(name="Locais de interesse", description="Adicionar, visualizar e remover locais de interesse para visitar")
 
 
@@ -101,31 +101,36 @@ def add_local(form: LocalSchema):
 
 
 
-# -----------------------------
-# LISTAR TODOS OS LUGARES
-# -----------------------------
+# ------------------------------------------------
+# LISTAR OS LOCAIS DE INTERESSE POR PAIS OU TODOS
+# ------------------------------------------------
+
 @app.get('/get_lugares', tags=[local_tag],
          responses={"200": ListagemLocaisSchema, "404": ErrorSchema})
-def get_lugares():
-    """Retorna todos os locais de interesse cadastrados."""
-
-    logger.debug("Coletando locais de interesse")
+def get_lugares(query: LocalFiltroSchema):
+    """Retorna todos os locais de interesse ou filtra por país."""
 
     session = Session()
-    locais = session.query(Local).all()
+
+    # Se o usuário passou ?pais=...
+    if query.local_pais:
+        logger.debug(f"Filtrando locais pelo país: {query.local_pais}")
+        locais = session.query(Local).filter(Local.local_pais == query.local_pais).all()
+    else:
+        logger.debug("Coletando todos os locais de interesse")
+        locais = session.query(Local).all()
 
     if not locais:
         return {"lugares": []}, 200
 
-    logger.debug(f"{len(locais)} lugares encontrados")
-
+    logger.debug(f"{len(locais)} locais encontrados")
     return apresenta_locais(locais), 200
 
 
 
-# -----------------------------
-# BUSCAR LUGAR POR NOME
-# -----------------------------
+# -----------------------------------
+# BUSCAR LOCAL DE INTERESSE POR NOME
+# -----------------------------------
 @app.get('/get_local', tags=[local_tag],
          responses={"200": LocalViewSchema, "404": ErrorSchema})
 def get_local(query: LocalBuscaSchema):
@@ -150,9 +155,9 @@ def get_local(query: LocalBuscaSchema):
 
 
 
-# -----------------------------
-# DELETAR LUGAR POR NOME
-# -----------------------------
+# -------------------------------------
+# DELETAR LOCAL DE INTERESSE  POR NOME
+# -------------------------------------
 @app.delete('/del_local', tags=[local_tag],
             responses={"200": LocalRemoveSchema, "404": ErrorSchema})
 def del_lugar(query: LocalBuscaSchema):
