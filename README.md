@@ -48,6 +48,8 @@ flask run --host 0.0.0.0 --port 5000 --reload
 
 Abra o [http://localhost:5000/#/](http://localhost:5000/#/) no navegador para verificar o status da API em execução.
 
+Para parar a execução, no Terminal digite CTRL+c
+
 Para desativar o ambiente virtual execute 
 -----------------------------------
 deactivate 
