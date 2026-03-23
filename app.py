@@ -3,7 +3,6 @@
 #                Pós Graduação em Full Stack - PUC Rio - 2026
 #                       
 #                          Francisco Silveira
-#
 #####################################################################################
 
 # Importa a classe OpenAPI e Info para configurar a documentação automática da API
@@ -39,7 +38,6 @@ app = OpenAPI(__name__, info=info)
 
 # Habilita CORS para toda a aplicação
 CORS(app)
-
 
 # Define tags usadas na documentação
 home_tag = Tag(name="Documentação", description="Swagger.")
@@ -100,11 +98,9 @@ def add_local(form: LocalSchema):
         return {"message": error_msg}, 400
 
 
-
 # ------------------------------------------------
 # LISTAR OS LOCAIS DE INTERESSE POR PAIS OU TODOS
 # ------------------------------------------------
-
 @app.get('/get_lugares', tags=[local_tag],
          responses={"200": ListagemLocaisSchema, "404": ErrorSchema})
 def get_lugares(query: LocalFiltroSchema):
@@ -125,7 +121,6 @@ def get_lugares(query: LocalFiltroSchema):
 
     logger.debug(f"{len(locais)} locais encontrados")
     return apresenta_locais(locais), 200
-
 
 
 # -----------------------------------
@@ -152,7 +147,6 @@ def get_local(query: LocalBuscaSchema):
     logger.debug(f"Local de interesse encontrado: '{local.local_nome}'")
 
     return apresenta_local(local), 200
-
 
 
 # -------------------------------------
