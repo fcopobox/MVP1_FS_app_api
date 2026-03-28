@@ -105,9 +105,9 @@ def add_local(form: LocalSchema):
 # LISTAR OS LOCAIS DE INTERESSE POR PAIS OU TODOS
 # ------------------------------------------------
 
-@app.get('/get_lugares', tags=[local_tag],
+@app.get('/get_locais', tags=[local_tag],
          responses={"200": ListagemLocaisSchema, "404": ErrorSchema})
-def get_lugares(query: LocalFiltroSchema):
+def get_locais(query: LocalFiltroSchema):
     """Retorna todos os locais de interesse ou filtra por país."""
 
     session = Session()
