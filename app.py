@@ -30,6 +30,9 @@ from schemas import *
 # Importa CORS para permitir requisições de outros domínios
 from flask_cors import CORS
 
+# Importa unicodedata para normalizar strings (remover acentos, etc.)
+import unicodedata
+
 
 # Cria informações básicas da API (nome e versão)
 info = Info(title="MVP1 - API Quero Visitar", version="1.0.0")
@@ -108,25 +111,40 @@ def add_local(form: LocalSchema):
 @app.get('/get_locais', tags=[local_tag],
          responses={"200": ListagemLocaisSchema, "404": ErrorSchema})
 def get_locais(query: LocalFiltroSchema):
-    """Retorna todos os locais de interesse ou filtra por país."""
+    """Retorna todos os locais de interesse ou filtra por país (ignorando acentos e caixa)."""
 
     session = Session()
 
-    # Se o usuário passou ?pais=...
+    # Se o usuário passou ?local_pais=...
     if query.local_pais:
-        logger.debug(f"Filtrando locais pelo país: {query.local_pais}")
-        locais = session.query(Local).filter(Local.local_pais == query.local_pais).all()
+        pais_normalizado = normalize(query.local_pais)
+        logger.debug(f"Filtrando locais pelo país (normalizado): {pais_normalizado}")
+
+        locais = session.query(Local).all()
+
+        # Filtragem manual
+        locais = [
+            loc for loc in locais
+            if normalize(loc.local_pais) == pais_normalizado
+        ]
+
     else:
         logger.debug("Coletando todos os locais de interesse")
         locais = session.query(Local).all()
 
     if not locais:
-        return {"lugares": []}, 200
+        return {"locais": []}, 200
 
     logger.debug(f"{len(locais)} locais encontrados")
     return apresenta_locais(locais), 200
 
-
+# Normaliza texto antes da consulta (remove acentos, converte para minúsculas)
+def normalize(text):
+    if not text:
+        return ""
+    text = unicodedata.normalize("NFD", text)
+    text = "".join(c for c in text if unicodedata.category(c) != "Mn")
+    return text.lower()
 
 # -----------------------------------
 # BUSCAR LOCAL DE INTERESSE POR NOME
