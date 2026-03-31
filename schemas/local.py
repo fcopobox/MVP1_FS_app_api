@@ -29,10 +29,12 @@ class ListagemLocaisSchema(BaseModel):
     """ Lista de locais de interesse retornada: """
     locais: List[LocalViewSchema]
 
+
 class LocalFiltroSchema(BaseModel):
     """ Lista de locais de interesse filtrada por país: """
     local_pais: str | None = None
-    
+
+
 class LocalRemoveSchema(BaseModel): 
     """ Estrutura de retorno ao deletar: """
     message: str

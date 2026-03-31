@@ -3,7 +3,6 @@
 #                Pós Graduação em Full Stack - PUC Rio - 2026
 #                       
 #                          Francisco Silveira
-#
 #####################################################################################
 
 # Importa a classe OpenAPI e Info para configurar a documentação automática da API
@@ -42,7 +41,6 @@ app = OpenAPI(__name__, info=info)
 
 # Habilita CORS para toda a aplicação
 CORS(app)
-
 
 # Define tags usadas na documentação
 home_tag = Tag(name="Documentação", description="Swagger.")
@@ -103,12 +101,15 @@ def add_local(form: LocalSchema):
         return {"message": error_msg}, 400
 
 
-
 # ------------------------------------------------
 # LISTAR OS LOCAIS DE INTERESSE POR PAIS OU TODOS
 # ------------------------------------------------
+<<<<<<< HEAD
 
 @app.get('/get_locais', tags=[local_tag],
+=======
+@app.get('/get_lugares', tags=[local_tag],
+>>>>>>> 5f8640eba26d2a2753e60b7617b73fd861be8a42
          responses={"200": ListagemLocaisSchema, "404": ErrorSchema})
 def get_locais(query: LocalFiltroSchema):
     """Retorna todos os locais de interesse ou filtra por país (ignorando acentos e caixa)."""
@@ -138,6 +139,7 @@ def get_locais(query: LocalFiltroSchema):
     logger.debug(f"{len(locais)} locais encontrados")
     return apresenta_locais(locais), 200
 
+<<<<<<< HEAD
 # Normaliza texto antes da consulta (remove acentos, converte para minúsculas)
 def normalize(text):
     if not text:
@@ -145,6 +147,8 @@ def normalize(text):
     text = unicodedata.normalize("NFD", text)
     text = "".join(c for c in text if unicodedata.category(c) != "Mn")
     return text.lower()
+=======
+>>>>>>> 5f8640eba26d2a2753e60b7617b73fd861be8a42
 
 # -----------------------------------
 # BUSCAR LOCAL DE INTERESSE POR NOME
@@ -170,7 +174,6 @@ def get_local(query: LocalBuscaSchema):
     logger.debug(f"Local de interesse encontrado: '{local.local_nome}'")
 
     return apresenta_local(local), 200
-
 
 
 # -------------------------------------
