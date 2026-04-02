@@ -62,7 +62,7 @@ def home():
 @app.post('/add_local', tags=[local_tag],
           responses={"200": LocalViewSchema, "400": ErrorSchema})
 def add_local(form: LocalSchema):
-    """Adiciona um novo lugar de interesse à base de dados."""
+    """Adiciona um novo local de interesse à base de dados."""
 
     # Cria objeto Local com dados enviados no formulário
     local = Local(
@@ -133,7 +133,6 @@ def get_locais(query: LocalFiltroSchema):
     logger.debug(f"{len(locais)} locais encontrados")
     return apresenta_locais(locais), 200
 
-
 # Normaliza texto antes da consulta (remove acentos, converte para minúsculas)
 def normalize(text):
     if not text:
@@ -141,6 +140,7 @@ def normalize(text):
     text = unicodedata.normalize("NFD", text)
     text = "".join(c for c in text if unicodedata.category(c) != "Mn")
     return text.lower()
+
 
 # -----------------------------------
 # BUSCAR LOCAL DE INTERESSE POR NOME
