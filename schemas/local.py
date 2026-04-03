@@ -4,7 +4,7 @@ from model.local import Local
 
 
 class LocalSchema(BaseModel):
-    """ Como um novo lugar deve ser representado: """
+    """ Como um novo local de interesse deve ser representado: """
     local_nome: str
     local_cidade: str
     local_pais: str
@@ -12,12 +12,12 @@ class LocalSchema(BaseModel):
 
 
 class LocalBuscaSchema(BaseModel):
-    """ Estrutura para buscar um lugar pelo nome: """
+    """ Estrutura para buscar um local de interesse pelo nome: """
     local_nome: str
 
 
 class LocalViewSchema(BaseModel):
-    """ Como um lugar será retornado: """
+    """ Como um local de interesse será retornado: """
     id: int
     local_nome: str
     local_cidade: str
